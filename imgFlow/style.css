@@ -1,0 +1,33 @@
+*{ /*通配*/
+    margin: 0;
+    padding: 0;
+}
+/*
+相对定位 布局 左浮动
+*/
+.box{
+    position: relative;
+    float: left;
+}
+/*
+内边距 10px;
+边框
+阴影
+圆角
+文字标签居中
+*/
+.content{
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+/*
+图片宽度190px
+高度原比例缩放
+*/
+.content img{
+    width: 190px;
+    height: auto;
+}

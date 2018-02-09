@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点我" style="width:200px;height:35px;margin:100px;">
+</body>
+<script src="http://wxhboy.com/js/jquery.js"></script>
+<script>
+    function jcall(data){
+        // alert(data.name);
+        // alert(data.email);
+        $('body').append('<h3>'+data.name+'</h3><br/><h5>'+data.email+'</h5>');
+    }
+    $('input[type=button]').click(function(){
+        $.ajax({
+            url:'http://localhost:8080/ajax(ky)/php.php', //请求地址 自己修改
+            type:'GET',
+            dataType:'jsonp',
+            jsonpCallback:'jcall',
+            success:function(data){
+                console.log(data);
+                alert('请求成功');
+            }
+        })
+    })
+</script>
+</html>

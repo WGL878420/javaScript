@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证用户名</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    input{
+        width: 200px;
+        height: 35px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .error{
+        color: #f00;
+    }
+    .success{
+        color: #0f0
+    }
+    p{
+        font-size: 20px;
+        display: none;
+    }
+    div{
+        margin: 200px auto;
+    }
+</style>
+<body>
+    <div>
+        <h2>用户名</h2>
+        <input id="username" type="text" maxlength="6" placeholder="ajax"><br>
+        <input id="get" type="text" maxlength="6" placeholder="get"><br>
+        <input id="post" type="text" maxlength="6" placeholder="post"><br>
+        <p class="error">用户名可用</p>
+    </div>
+</body>
+<script src="http://wxhboy.com/js/jquery.js"></script>
+<script>
+    $(function(){
+
+        $('div').delegate('input','focus',function(event){ //事件委托
+            $(event.target).siblings('input').val(''); //把除获得焦点以外的input框清空
+            $('p').hide();//隐藏p标签
+        })
+        
+        function addp(data){ //请求成功执行的函数
+            $('p').show(); //显示p标签
+            //console.log(data);
+            if(data=='存在'){
+                $('p').html('用户名不可用'); //修改p标签的html
+                $('p').attr('class','error'); //修改他的class属性
+            }else{
+                $('p').html('用户名可用'); //修改p标签的html
+                $('p').attr('class','success'); //修改他的class属性
+            }
+        }
+        //第一个用ajax 的post请求
+        $('#username').on('input',function(){ //绑定input事件
+            var username=$(this).val(); //获取用户输入的值
+            if(username.length>0){
+                $.ajax({
+                    async:false,  ///默认true 是异步，可以省略不写，false 同步
+                    url:'test.php', //请求地址
+                    type:'post', //请求方式 有POST 和GET
+                    data:{"user": username }, //传递给php的参数 这里吧用户输入的id传递过去
+                    dataType:'text', //请求回来的格式
+                    success:function(data){
+                        addp(data); //执行自定义函数(把请求过来的参数带过去)
+                    },
+                    error:function(){
+                        console.log('请求失败'); //输出失败
+                    }
+                })
+            }else{
+                $('p').hide();//如果输入框没有输入东西则隐藏p标签
+            }
+        })
+        
+        //ajax  jquery get方法
+        $('#get').on('input',function(){  //绑定input事件
+            var username=$(this).val(); //获取用户输入的值
+            if(username.length>0){
+                $.get('test.php',{"user": username },function(data){
+                    addp(data); //执行自定义函数(把请求过来的参数带过去)
+                },'text');
+            }else{
+                $('p').hide();//如果输入框没有输入东西则隐藏p标签
+            }
+        });
+        //ajax  jquery post方法
+        $('#post').on('input',function(){ //绑定input事件
+            var username=$(this).val(); //获取用户输入的值
+            if(username.length>0){
+                $.post('test.php',{"user": username },function(data){
+                    addp(data); //执行自定义函数(把请求过来的参数带过去)
+                },'text');
+            }else{
+                $('p').hide();//如果输入框没有输入东西则隐藏p标签
+            }
+        });
+
+        //原生js
+
+    });
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>文件分享</title>
+<meta name="description" content="文件分享" /> 
+<meta name="keywords" content="文件分享" />
+<meta name="author" content="文件分享" />
+<meta name="Copyright" content="文件分享" />
+<link rel="stylesheet" href="css/log_add.css">
+</head>
+<style>
+  .tip{
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  .success{
+    color: green;
+  }
+  .error{
+    color: red;
+  }
+  .bod{
+    box-shadow: 0 0 5px red;
+    border:1px solid red;
+  }
+</style>
+<body>
+<body style="min-width:980px">
+<div class="cotn_principal">
+  <div class="cont_centrar">
+    <div class="cont_login">
+      <div class="cont_info_log_sign_up">
+        <div class="col_md_login">
+          <div class="cont_ba_opcitiy">
+            <h2>登录</h2>
+            <p>已有账号，直接登录！</p>
+            <button class="btn_login" onclick="cambiar_login()">登录</button>
+          </div>
+        </div>
+        <div class="col_md_sign_up">
+          <div class="cont_ba_opcitiy">
+            <h2>注册</h2>
+            <p>还没有账号？免费注册！</p>
+            <button class="btn_sign_up" onclick="cambiar_sign_up()">注册</button>
+          </div>
+        </div>
+      </div>
+      <div class="cont_back_info">
+        <div class="cont_img_back_grey"> <img src="http://wxhboy.com/bg/1.jpg" alt="" /> </div>
+      </div>
+      <div class="cont_forms" >
+        <div class="cont_img_back_"> <img src="http://wxhboy.com/bg/1.jpg" alt="" /> </div>
+        <div class="cont_form_login"> <a href="#" onclick="ocultar_login_sign_up()" >X</a>
+          <h2>登录</h2>
+          <input id="log_name" type="text" maxlength="10" placeholder="用户名" />
+          <input id="log_pwd" type="password" maxlength="16" placeholder="密码" />    
+          <button class="btn_login" onclick="cambiar_login()">登录</button>
+        </div>
+        <div class="cont_form_sign_up"> <a href="#" onclick="ocultar_login_sign_up()">X</a>
+          <h2>注册</h2>
+          <input id="add_name" type="text" maxlength="10" placeholder="用户名" />
+          <input id="add_pwd" type="password" maxlength="16" placeholder="密码" />
+          <input id="add_pwds" type="password" maxlength="16" placeholder="重复密码" />
+          <button class="btn_sign_up" onclick="cambiar_sign_up()">注册</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://wxhboy.com/js/jquery.js"></script>
+<script src="js/log_add.js"></script>
+<script src="js/my.js"></script>
+<script src="http://wxhboy.com/bootstrap/js/bootstrap.js"></script>
+</body>
+</body>
+</html>

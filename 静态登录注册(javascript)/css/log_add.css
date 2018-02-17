@@ -161,7 +161,7 @@ z-index: 1;
 .col_md_login > h2 {
   font-weight: 400;
 margin-top: 70px;
-    color: #757575;
+    color: #333333;
 }
 
 .col_md_login > p {
@@ -317,13 +317,13 @@ margin-left: 10px;
 margin-top: 20px;
   width: 260px;
 border: none;
-    color: #757575;
+    color: #333333;
 }
 
 .cont_form_sign_up > h2 {
 margin-top: 50px; 
 font-weight: 400;
-  color: #757575;
+  color: #333333;
 }
 
 
@@ -334,16 +334,16 @@ margin-top: 20px;
   width: 260px;
 border: none;
 text-align: left;
-  color: #757575;
+  color: #333333;
 }
 
 .cont_form_login > h2 {
 margin-top: 110px; 
 font-weight: 400;
-  color: #757575;
+  color: #333333;
 }
 .cont_form_login > a,.cont_form_sign_up > a  {
-  color: #757575;
+  color: #333333;
     position: relative;
     float: left;
     margin: 10px;

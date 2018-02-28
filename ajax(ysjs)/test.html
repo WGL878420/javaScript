@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生js的ajax请求</title>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+    用户名<input onkeyup="yhm1(this.value)" type="text">
+<script>
+    function getxml(){  // 创建XMLHttpRequest 对象
+        try {
+            return new XMLHttpRequest();
+        } catch (error) {  //因为老版本的ie可能不支持 XMLHttpRequest 对象 通过另外一种方式获取  ie5 ie6
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    }
+    // console.log(getxml());
+    function yhm1(username){
+        var httpxml=getxml();
+        httpxml.open("post","http://127.0.0.1:8080/ajax(ysjs)/test.php?",true);   //true表示异步请求，false 同步
+        httpxml.send("user="+username);
+        httpxml.timeout=500; //超时设置  
+        httpxml.onreadystatechange=function(){
+            // console.log(httpxml.readyState);  
+                /*
+                    0: 请求未初始化
+                    1: 服务器连接已建立
+                    2: 请求已接收
+                    3: 请求处理中
+                    4: 请求已完成，且响应已就绪
+                */
+            // console.log(httpxml.status);
+            // //参考网站 https://www.cnblogs.com/liu-fei-fei/p/5618782.html 状态码分析
+            if(httpxml.readyState==4 && httpxml.status==200){
+                alert(httpxml.responseText); //弹出返回的数据
+            }
+        }
+    }
+
+    //跨域问题
+    // function yhm(username){
+    //     var myscript=document.createElement("script");
+    //     myscript.type="text/javascript";
+    //     myscript.src="http://127.0.0.1:8080/ajax(ysjs)/test.php?user="+username;
+    //     document.body.appendChild(myscript);
+    // }
+    // function fn1(data){
+    //     alert(data);
+    // }
+</script>
+<!-- <script src="http://127.0.0.1:8080/ajax(ysjs)/test.php?user=aaa"></script> -->
+</html>

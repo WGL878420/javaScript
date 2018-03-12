@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片缩略图</title>
+    <style>
+        *{padding: 0px;margin: 0px}
+
+        #slt{
+            width: 200px;
+            height: auto;
+            border: #888 solid 2px;
+            padding: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        #box{
+            width: 300px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="file" name="imgfile" id="picfile" onchange="showimg(this)">
+        <img id="slt" src="#" alt="缩略图">
+    </div>
+</body>
+<script src="http://wxhboy.com/js/jquery.js"></script>
+<script>
+    function showimg(fileobj){
+        var file=$(fileobj)[0].files[0];//获取用户选择的图片数据
+        var srcdata=window.URL.createObjectURL(file);
+        $('#slt').attr('src',srcdata).css('display','block');
+    }
+</script>
+</html>
